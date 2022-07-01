@@ -6,25 +6,12 @@ pipeline {
      maven 'maven'
     }
     environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "https"
-        NEXUS_URL = "nexus-lab.pp.ua"
-        NEXUS_REPOSITORY = "maven-lab"
-        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
+        NEXUS_CREDENTIAL_ID = credentials('nexus-user-credentials')
     }
    stages {
-     stage("Clone code from GIT") {
-        steps {
-          script {
-            git branch: 'main', 
-                url: 'https://github.com/atrofymchuk/spring-petclinic.git'
-                    
-          }
-        }
-     }
      stage('Download artifact Nexus Repository Manager') {
        steps {
-         sh 'mvn help:evaluate'
+         sh 'wget --user=$NEXUS_CREDENTIAL_ID_USR --password=$NEXUS_CREDENTIAL_ID_PSW 'https://nexus-lab.pp.ua/repository/maven-lab/org/springframework/samples/spring-petclinic/2.7.2-SNAPSHOT/spring-petclinic-2.7.2-20220701.052309-1.jar'
          sh 'ls -la'
        }
      }
