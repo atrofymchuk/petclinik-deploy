@@ -30,7 +30,7 @@ pipeline {
         stage('inject variables') {
            steps {
              script {
-               def variables = build job: 'petclinic-build'
+               
                def vars = variables.getBuildVariables()
                 //println "found variables" + vars
                env.deploy_pom_version = vars.build_pom_version
