@@ -22,7 +22,7 @@ pipeline {
                 env.deploy_pom_version = "NOT DEFINED VERSION"
                 env.deploy_pom_artifactid = "NOT DEFINED ARTIFACTID"
                 env.deploy_pom_groupid = "NOT DEFINED GROUPID"
-                env.deploy_pom_packaging = "NOT DEFINED PACKAGING
+                env.deploy_pom_packaging = "NOT DEFINED PACKAGING"
                 
               }
            }  
