@@ -21,8 +21,7 @@ pipeline {
      stage('Download artifact Nexus Repository Manager') {
        steps {
          sh '''#!/bin/bash
-               download_url=$(curl --user $NEXUS_CREDENTIAL_ID_USR:$NEXUS_CREDENTIAL_ID_PSW -X GET "${NEXUS_URL}/service/rest/v1/search/assets?repository=${MAVEN_REPO}&maven.groupId=${GROUP_ID}&maven.artifactId=${ARTIFACT_ID}&maven.baseVersion=${VERSION}&maven.extension=${FILE_EXTENSION}" -H  "accept: application/json"  | jq -rc '.items | .[].downloadUrl' | sort | tail -n 1)
-               echo $download_url
+               curl --user $NEXUS_CREDENTIAL_ID_USR:$NEXUS_CREDENTIAL_ID_PSW -X GET "${NEXUS_URL}/service/rest/v1/search/assets?repository=${MAVEN_REPO}&maven.groupId=${GROUP_ID}&maven.artifactId=${ARTIFACT_ID}&maven.baseVersion=${VERSION}&maven.extension=${FILE_EXTENSION}" -H  "accept: application/json" > jar.json
          '''
        }
      }
