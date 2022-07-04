@@ -11,11 +11,11 @@ pipeline {
         NEXUS_URL = "nexus-lab.pp.ua"
         NEXUS_REPOSITORY = "maven-lab"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-        MAVEN_REPO = maven-lab
-        GROUP_ID = org.springframework.samples
-        ARTIFACT_ID = spring-petclinic
+        MAVEN_REPO = "maven-lab"
+        GROUP_ID = "org.springframework.samples"
+        ARTIFACT_ID = "spring-petclinic"
         VERSION = "2.7.3-SNAPSHOT"
-        FILE_EXTENSION = jar
+        FILE_EXTENSION = "jar"
     }
    stages {
      stage('Download artifact Nexus Repository Manager') {
