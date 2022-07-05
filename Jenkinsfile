@@ -29,4 +29,10 @@ pipeline {
            }
         }
    }
+   stage('Docker Build images') {
+      agent any
+      steps {
+        sh 'docker build -t andreit2/spring-petclinic:latest .'
+      }
+    }
 }
