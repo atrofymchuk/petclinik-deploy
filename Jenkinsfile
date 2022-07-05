@@ -16,7 +16,7 @@ pipeline {
         GROUP_ID = "org.springframework.samples"
         ARTIFACT_ID = "spring-petclinic"
         FILE_EXTENSION = "jar"
-        WORKDIR = ""
+       
     }
    stages {
         stage('Download artifact from Nexus Repository Manager') {
@@ -29,8 +29,8 @@ pipeline {
               }    
                script {
                    
-                   echo $WORKDIR
-                   WORKDIR = $(pwd)
+                   echo $WORKSPACE
+                  
                    
                }    
            }
