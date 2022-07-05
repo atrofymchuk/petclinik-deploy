@@ -21,16 +21,16 @@ pipeline {
    stages {
         stage('Download artifact from Nexus Repository Manager') {
            steps {
+                  sh 'rm -rf *.jar*'
+                
+           }
+           steps {
               withCredentials([usernamePassword(credentialsId: 'nexus-user-credentials', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) {
                  sh '''#!/bin/bash
                      download_url=$(curl --user $USER:$PASSWD -X GET "${NEXUS_URL}/service/rest/v1/search/assets?repository=${MAVEN_REPO}&maven.groupId=${GROUP_ID}&maven.artifactId=${ARTIFACT_ID}&maven.baseVersion=${VERSION}&maven.extension=${FILE_EXTENSION}" -H  "accept: application/json"  | jq -rc '.items | .[].downloadUrl' | sort | tail -n 1)
                      wget --user=\$USER --password=\$PASSWD $download_url
                     '''
               }    
-              steps {
-                  sh 'rm -rf *.jar*'
-                
-            }
            }
         }
         stage('Docker Build images') {
