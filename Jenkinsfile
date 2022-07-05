@@ -26,10 +26,10 @@ pipeline {
                      download_url=$(curl --user $USER:$PASSWD -X GET "${NEXUS_URL}/service/rest/v1/search/assets?repository=${MAVEN_REPO}&maven.groupId=${GROUP_ID}&maven.artifactId=${ARTIFACT_ID}&maven.baseVersion=${VERSION}&maven.extension=${FILE_EXTENSION}" -H  "accept: application/json"  | jq -rc '.items | .[].downloadUrl' | sort | tail -n 1)
                      wget --user=\$USER --password=\$PASSWD $download_url
                     '''
-              }    
-           }
-           steps {
-                sh 'docker build -t petclinic .'
+              }
+              script {
+                   sh 'docker build -t petclinic .'
+              }
            }
         }    
    } 
