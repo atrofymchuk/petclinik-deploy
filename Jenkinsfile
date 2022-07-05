@@ -26,6 +26,9 @@ pipeline {
                      wget --user=\$USER --password=\$PASSWD $download_url
                     '''
               }    
+               script {
+                   sh 'ls -la'
+               }    
            }
         }
         stage('Docker Build images') {
