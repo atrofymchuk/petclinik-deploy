@@ -29,8 +29,8 @@ pipeline {
               }    
                script {
                    
-                   sh 'echo $WORKDIR'
-                   sh 'WORKDIR = $(pwd)'
+                   echo $WORKDIR
+                   WORKDIR = $(pwd)
                    
                }    
            }
