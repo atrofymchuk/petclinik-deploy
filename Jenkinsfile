@@ -32,7 +32,7 @@ pipeline {
         stage('Docker Build images') {
             agent any
             steps {
-                sh 'docker build -t ${env.IMAGE}:${TAG} .'
+                sh 'docker build -t ${env.IMAGE}:latest .'
             }
         }     
    } 
