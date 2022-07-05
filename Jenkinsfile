@@ -27,18 +27,16 @@ pipeline {
                      wget --user=\$USER --password=\$PASSWD $download_url
                     '''
               }    
-               script {
-                   
-                   echo ${WORKSPACE}
-                  
-                   
-               }    
+              steps {
+                  echo ${env.WORKSPACE}
+                
+            }
            }
         }
         stage('Docker Build images') {
             agent any
             steps {
-                sh 'docker version'
+                echo ${env.WORKSPACE}
                 
             }
         }  
