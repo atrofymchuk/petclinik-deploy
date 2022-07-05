@@ -2,8 +2,11 @@ pipeline {
     agent {
         label "master"
     }
+    parameters {
+        string defaultValue: '2.7.3-SNAPSHOT', name: 'VERSION'
+    }
     tools {
-     maven 'maven'
+        maven 'maven'
     }
      environment {
         NEXUS_URL = "https://nexus-lab.pp.ua"
