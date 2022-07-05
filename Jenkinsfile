@@ -5,6 +5,9 @@ pipeline {
     parameters {
         string defaultValue: '2.7.3-SNAPSHOT', name: 'VERSION'
     }
+    environment {
+        wokdir = ""
+    }
     tools {
         maven 'maven'
     }
@@ -27,8 +30,7 @@ pipeline {
                     '''
               }    
                script {
-                   sh 'pwd'
-                   sh 'ls -la'
+                   sh '$workdir=$(pwd)'
                }    
            }
         }
@@ -36,9 +38,7 @@ pipeline {
             agent any
             steps {
                 sh 'docker version'
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'echo "${WORKSPACE}"'
+                sh 'echo $workdir'
             }
         }  
    } 
