@@ -31,7 +31,7 @@ pipeline {
                    env.WORKDIR = ""
                    sh 'echo $WORKDIR'
                    sh 'env.WORKDIR = $(pwd)'
-                   sh 'echo $env.WORKDIR'
+                   sh 'echo ${env.WORKDIR}'
                }    
            }
         }
@@ -39,7 +39,7 @@ pipeline {
             agent any
             steps {
                 sh 'docker version'
-                sh 'echo $env.WORKDIR'
+                sh 'echo ${env.WORKDIR}'
             }
         }  
    } 
