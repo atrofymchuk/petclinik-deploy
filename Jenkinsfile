@@ -31,7 +31,7 @@ pipeline {
                    
                    sh 'echo $WORKDIR'
                    sh 'WORKDIR = $(pwd)'
-                   sh 'echo ${WORKDIR}'
+                   
                }    
            }
         }
