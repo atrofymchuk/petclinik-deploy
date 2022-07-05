@@ -33,12 +33,6 @@ pipeline {
               }    
            }
         }
-        stage('Docker Build images') {
-            agent any
-            steps {
-                echo "${env.WORKSPACE}"
-                
-            }
-        }  
+          
    } 
 }
