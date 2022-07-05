@@ -38,6 +38,7 @@ pipeline {
                 sh 'docker version'
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'echo "${WORKSPACE}"'
             }
         }  
    } 
