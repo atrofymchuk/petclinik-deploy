@@ -27,6 +27,7 @@ pipeline {
                     '''
               }    
                script {
+                   sh 'pwd'
                    sh 'ls -la'
                }    
            }
