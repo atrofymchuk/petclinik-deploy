@@ -16,14 +16,10 @@ pipeline {
         GROUP_ID = "org.springframework.samples"
         ARTIFACT_ID = "spring-petclinic"
         FILE_EXTENSION = "jar"
-       
+        IMAGE = "andreit2/petclinic"
     }
    stages {
         stage('Download artifact from Nexus Repository Manager') {
-           steps {
-                  sh 'rm -rf *.jar*'
-                
-           }
            steps {
               withCredentials([usernamePassword(credentialsId: 'nexus-user-credentials', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) {
                  sh '''#!/bin/bash
@@ -33,6 +29,11 @@ pipeline {
               }    
            }
         }
-          
+        stage('Docker Build images') {
+            agent any
+            steps {
+                sh 'docker build -t ${env.IMAGE}:${TAG} .'
+            }
+        }     
    } 
 }
