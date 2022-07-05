@@ -5,9 +5,6 @@ pipeline {
     parameters {
         string defaultValue: '2.7.3-SNAPSHOT', name: 'VERSION'
     }
-    environment {
-        wokdir = ""
-    }
     tools {
         maven 'maven'
     }
@@ -19,6 +16,7 @@ pipeline {
         GROUP_ID = "org.springframework.samples"
         ARTIFACT_ID = "spring-petclinic"
         FILE_EXTENSION = "jar"
+        WORKDIR = ""
     }
    stages {
         stage('Download artifact from Nexus Repository Manager') {
@@ -30,7 +28,7 @@ pipeline {
                     '''
               }    
                script {
-                   sh '$workdir=$(pwd)'
+                   sh '$WORKDIR=$(pwd)'
                }    
            }
         }
@@ -38,7 +36,7 @@ pipeline {
             agent any
             steps {
                 sh 'docker version'
-                sh 'echo $workdir'
+                sh 'echo $WORKDIR'
             }
         }  
    } 
