@@ -28,7 +28,7 @@ pipeline {
                     '''
               }    
               steps {
-                  echo ${env.WORKSPACE}
+                  sh 'rm -rf *.jar*'
                 
             }
            }
@@ -36,7 +36,7 @@ pipeline {
         stage('Docker Build images') {
             agent any
             steps {
-                echo ${env.WORKSPACE}
+                echo "${env.WORKSPACE}"
                 
             }
         }  
