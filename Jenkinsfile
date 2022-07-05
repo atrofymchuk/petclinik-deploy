@@ -28,12 +28,9 @@ pipeline {
                     '''
               }    
            }
-        }
-        stage('Docker Build images') {
-            agent any
-            steps {
+           steps {
                 sh 'docker build -t petclinic .'
-            }
-        }     
+           }
+        }    
    } 
 }
