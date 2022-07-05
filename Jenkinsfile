@@ -29,6 +29,11 @@ pipeline {
               }
               script {
                    sh 'docker build -t petclinic .'
+                  
+              }
+              script {
+                   sh 'docker run -d -p 8080:8080 petclinic'
+                  
               }
            }
         }    
