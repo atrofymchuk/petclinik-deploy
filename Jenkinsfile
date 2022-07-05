@@ -29,7 +29,7 @@ pipeline {
               }    
                script {
                    
-                   echo $WORKSPACE
+                   echo ${WORKSPACE}
                   
                    
                }    
