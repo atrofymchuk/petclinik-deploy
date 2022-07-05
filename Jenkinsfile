@@ -16,7 +16,7 @@ pipeline {
         GROUP_ID = "org.springframework.samples"
         ARTIFACT_ID = "spring-petclinic"
         FILE_EXTENSION = "jar"
-        WORKDIR = ""
+        env.WORKDIR = ""
     }
    stages {
         stage('Download artifact from Nexus Repository Manager') {
