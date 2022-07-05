@@ -28,8 +28,8 @@ pipeline {
                     '''
               }
               script {
-                   sh 'java -jar *.jar'
-              
+                   sh 'java -jar ./*.jar'
+              }
            }
         }    
    } 
